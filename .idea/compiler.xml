@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="logback-demo" />
+        <module name="banner-demo" />
+        <module name="mybatisplus-demo" />
+        <module name="mybatis-demo" />
+        <module name="redis-demo" />
+        <module name="mybatis-plus-generator-demo" />
+        <module name="springmvc-demo" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="banner-demo" options="-parameters" />
+      <module name="logback-demo" options="-parameters" />
+      <module name="mybatis-demo" options="-parameters" />
+      <module name="mybatis-plus-generator-demo" options="-parameters" />
+      <module name="mybatisplus-demo" options="-parameters" />
+      <module name="redis-demo" options="-parameters" />
+      <module name="springmvc-demo" options="-parameters" />
+    </option>
+  </component>
+</project>

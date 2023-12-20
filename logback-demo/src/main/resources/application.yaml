@@ -1,0 +1,20 @@
+server:
+  port: 80
+  servlet:
+    context-path: /
+spring:
+  application:
+    name: logback-demo
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://192.168.116.166:3306/mybatis-example
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+logging:
+  level:
+    root: debug
+  file:
+    path: D:\workspace\javaWorkspace\springboot-demo\logback-demo
+debug: false
