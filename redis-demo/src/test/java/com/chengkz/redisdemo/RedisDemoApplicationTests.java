@@ -12,7 +12,7 @@ class RedisDemoApplicationTests {
 
     @Test
     void contextLoads() {
-        redisTemplate.opsForValue().set("hello","java");
+        redisTemplate.opsForValue().set("test","java");
     }
 
 }
