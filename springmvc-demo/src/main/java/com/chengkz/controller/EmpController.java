@@ -2,6 +2,10 @@ package com.chengkz.controller;
 
 
 import com.chengkz.pojo.Emp;
+import com.chengkz.result.ApiResponse;
+import com.chengkz.service.EmpService;
+import com.chengkz.service.impl.EmpServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,13 +21,21 @@ import java.util.List;
 @RestController
 @RequestMapping
 public class EmpController {
+    @Autowired
+    private EmpServiceImpl empService;
+
     @GetMapping("emp")
-    public Emp all(){
+    public ApiResponse<List<Emp>> all(){
+        return ApiResponse.success(empService.getAllEmp());
+    }
+
+    @GetMapping("add")
+    public ApiResponse add(){
         Emp emp = new Emp();
-        emp.setEmpId(1111L);
-        emp.setEmpSalary(1.111111);
-        emp.setEmpName("cxk");
-        return emp;
+        emp.setEmpName("ckz");
+        emp.setEmpSalary(10000.111);
+        empService.addEmp(emp);
+        return ApiResponse.success();
     }
 
     @GetMapping("param1")

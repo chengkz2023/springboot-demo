@@ -1,8 +1,11 @@
 package com.chengkz.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * ClassName: Emp
@@ -15,7 +18,7 @@ import lombok.ToString;
 @Data
 @ToString
 @EqualsAndHashCode
-public class Emp {
+public class Emp implements Serializable {
     private Long empId;
     private String empName;
     private Double empSalary;
