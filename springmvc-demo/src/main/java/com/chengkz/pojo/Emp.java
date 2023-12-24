@@ -1,5 +1,6 @@
 package com.chengkz.pojo;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,6 +21,7 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class Emp implements Serializable {
     private Long empId;
+    @NotEmpty(message = "缺少必要参数")
     private String empName;
     private Double empSalary;
 }

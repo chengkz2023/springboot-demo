@@ -3,9 +3,14 @@ package com.chengkz.controller;
 
 import com.chengkz.pojo.Emp;
 import com.chengkz.result.ApiResponse;
+import com.chengkz.result.ApiResponseCode;
 import com.chengkz.service.EmpService;
 import com.chengkz.service.impl.EmpServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,6 +41,27 @@ public class EmpController {
         emp.setEmpSalary(10000.111);
         empService.addEmp(emp);
         return ApiResponse.success();
+    }
+
+    @GetMapping("valid")
+    public ApiResponse<Emp> empValidTest(@Valid Emp emp, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            List<ObjectError> allErrors = bindingResult.getAllErrors();
+            allErrors.forEach(p ->{
+                FieldError fieldError = (FieldError) p;
+                System.out.println("Invalid Parameter : object -" +fieldError.getObjectName() +
+                                ",field - " +fieldError.getField() +
+                        ",errorMessage - " + fieldError.getDefaultMessage());
+            });
+            return ApiResponse.failure(ApiResponseCode.BAD_REQUEST);
+        } else {
+            return ApiResponse.success(emp);
+        }
+    }
+
+    @GetMapping("exception")
+    public ApiResponse<Emp> globalExceptionTest(@Valid Emp emp){
+        return ApiResponse.success(emp);
     }
 
     @GetMapping("param1")
